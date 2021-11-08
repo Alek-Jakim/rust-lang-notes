@@ -127,6 +127,9 @@ let guess = "42".parse().expect("Not a number!");
 
 * Rust has four primary scalar types: integers, floating-point numbers, Booleans, and characters.
 
+
+#### **Integer Types**
+
 | Length        | Signed           | Unsigned  |
 | ------------- |:-------------:| -----:|
 | 8-bit      | i8 | u8 |
@@ -157,3 +160,102 @@ let guess = "42".parse().expect("Not a number!");
 * How do you know which type of integer to use? If you’re unsure, Rust’s defaults are generally good places to start: integer types default to `i32`.
 
 * The primary situation in which you’d use isize or usize is when indexing some sort of collection.
+
+* *Integer Overflow* - Let’s say you have a variable of type u8 that can hold values between 0 and 255. If you try to change the variable to a value outside of that range, such as 256, *integer overflow* will occur.
+
+* When you’re compiling in release mode with the `--release` flag, Rust does not include checks for integer overflow that cause panics. Rust performs *two’s complement wrapping*. Relying on integer overflow’s wrapping behavior is considered an error.
+
+#### **Floating-Point Types**
+
+* Rust’s floating-point types are `f32` and `f64`, which are 32 bits and 64 bits in size, respectively.
+
+* The default type is f64 because on modern CPUs it’s roughly the same speed as f32 but is capable of more precision.
+
+```rust
+fn main() {
+    let x = 2.0; // f64
+
+    let y: f32 = 3.0; // f32
+}
+```
+
+* Floating-point numbers are represented according to the IEEE-754 standard. The `f32` type is a single-precision float, and `f64` has double precision.
+
+#### **Numeric Operations**
+
+```rust
+fn main() {
+    // addition
+    let sum = 5 + 10;
+
+    // subtraction
+    let difference = 95.5 - 4.3;
+
+    // multiplication
+    let product = 4 * 30;
+
+    // division
+    let quotient = 56.7 / 32.2;
+    let floored = 2 / 3; // Results in 0
+
+    // remainder
+    let remainder = 43 % 5;
+}
+```
+
+#### **Numeric Operations**
+
+* Boolean type in Rust has two possible values: `true` and `false`. Booleans are one byte in size. The Boolean type in Rust is specified using `bool`.
+
+```rust
+fn main() {
+    let t = true;
+
+    let f: bool = false; // with explicit type annotation
+}
+```
+
+#### **The Character Type**
+
+* Rust’s `char` type is the language’s most primitive alphabetic type. (`char` literals are specified with single quotes, as opposed to string literals, which use double quotes.)
+
+```rust
+fn main() {
+    let c = 'z';
+    let z = 'ℤ';
+    let heart_eyed_cat = '😻';
+}
+```
+
+* Rust’s `char` type is four bytes in size and represents a Unicode Scalar Value, which means it can represent a lot more than just ASCII. 
+
+* Accented letters; Chinese, Japanese, and Korean characters; emoji; and zero-width spaces are all valid `char` values in Rust.
+
+* Your human intuition for what a “character” is may not match up with what a `char` is in Rust. 
+
+### **Compound Types**
+
+* Compound types can group multiple values into one type. Rust has two primitive compound types: tuples and arrays.
+
+#### **The Tuple Type**
+
+* A tuple is a general way of grouping together a number of values with a variety of types into one compound type.
+
+* The variable `tup` binds to the entire tuple, because a tuple is considered a single compound element. 
+
+```rust
+fn main() {
+    // The types of the different values in the tuple don’t have to be the same.
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+
+    // To get the individual values out of a tuple, we can use pattern matching to destructure a tuple value
+    let (x, y, z) = tup;
+
+    // We can also access a tuple element directly by using a period (.) followed by the index of the value
+    let five_hundred = x.0;
+
+    let six_point_four = x.1;
+}
+```
+
+* The tuple without any values, `()`, is a special type that has only one value, also written `()`. The type is called the *unit type* and the value is called the *unit value*. Expressions implicitly return the *unit value* if they don’t return any other value.
