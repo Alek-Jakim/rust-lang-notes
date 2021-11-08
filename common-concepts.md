@@ -1,7 +1,7 @@
 ## Common Concepts in Rust
 
 
-## 1. Guessing Game
+## **1. Guessing Game**
 
 ```rust
 use std::io;
@@ -40,7 +40,7 @@ fn main() {
 
 ---
 
-## 2. Variables and Mutability
+## **2. Variables and Mutability**
 
 * By default variables are immutable.
 
@@ -107,3 +107,53 @@ let spaces = spaces.len();
 ---
 
 ## **3. Data Types**
+
+* Two data type subsets: **scalar** and **compound**.
+
+* Rust is a *statically typed* language, which means that it must know the types of all variables at compile time
+
+* In cases when many types are possible, such as when converting a `String` to a numeric type using `parse`, we must add a type annotation.
+
+```rust
+let guess: u32 = "42".parse().expect("Not a number!");
+
+let guess = "42".parse().expect("Not a number!");
+// Error: ^^^^^ consider giving `guess` a type
+```
+
+### **Scalar Types**
+
+* A scalar type represents a single value.
+
+* Rust has four primary scalar types: integers, floating-point numbers, Booleans, and characters.
+
+| Length        | Signed           | Unsigned  |
+| ------------- |:-------------:| -----:|
+| 8-bit      | i8 | u8 |
+| 16-bit     | i16      |   u16 |
+| 32-bit     | i32     |    $32 |
+| 64-bit      | i64 | u64 |
+| 128-bit     | i128      |   u128 |
+| arch     | isize     |    usize |
+
+* Each variant can be either signed or unsigned and has an explicit size. 
+
+* *Signed* and *unsigned* refer to whether it’s possible for the number to be negative—in other words, whether the number needs to have a sign with it (signed) or whether it will only ever be positive and can therefore be represented without a sign (unsigned). 
+
+* Each signed variant can store numbers from -(2<sup>n</sup> - 1) to 2<sup>n</sup> - 1 - 1 inclusive, where *n* is the number of bits that variant uses.
+
+* Additionally, the `isize` and `usize` types depend on the kind of computer your program is running on: 64 bits if you’re on a 64-bit architecture and 32 bits if you’re on a 32-bit architecture.
+
+* You can write integer literals in any of the forms shown in the table below:
+
+| Number literals        | Example           | 
+| ------------- |:-------------:| 
+| Decimal      | `98_222` | 
+| Hex     | `0xff`      |   
+| Octal     | `0o77`     |    
+| Binary      | `0b1111_0000` |  
+| Byte    | `b'A'`      |    
+
+* How do you know which type of integer to use? If you’re unsure, Rust’s defaults are generally good places to start: integer types default to `i32`.
+
+* The primary situation in which you’d use isize or usize is when indexing some sort of collection.
