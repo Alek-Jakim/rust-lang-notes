@@ -307,3 +307,84 @@ fn main() {
     let second = a[1];
 }
 ```
+
+---
+
+## **4. Functions**
+
+* Rust code uses snake case as the conventional style for function and variable names.
+
+* Rust doesn’t care where you define your functions, only that they’re defined somewhere.
+
+```rust
+    //X is the parameter.
+    fn another_function(x: i32) {
+        println!("The value of x is: {}", x);
+    }
+
+    //The concrete value 5 is the argument
+    another_function(5);
+```
+
+* In function signatures, you *must* declare the type of each parameter.
+
+```rust
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("The measurement is: {}{}", value, unit_label);
+}
+```
+
+
+#### **Function Bodies Contain Statements and Expressions**
+
+* Function bodies are made up of a series of statements optionally ending in an expression.
+
+* Rust is an expression-based language, this is an important distinction to understand. 
+
+* *Statements* are instructions that perform some action and do not return a value.
+
+* *Expressions* evaluate to a resulting value.
+
+```rust
+//This will throw an error
+fn main() {
+    let x = (let y = 6);
+}
+
+// The let y = 6 statement does not return a value, so there isn’t anything for x to bind to.
+
+// In C and Ruby, the assignment returns the value of the assignment.
+
+// In those languages, you can write x = y = 6 and have both x and y have the value 6; that is not the case in Rust.
+```
+
+* Expressions evaluate to a value and make up most of the rest of the code that you’ll write in Rust.
+
+* Calling a function is an expression. Calling a macro is an expression. The block that we use to create new scopes, `{}`, is an expression.
+
+
+#### **Functions with Return Values**
+
+* Functions can return values to the code that calls them.
+
+* We don’t name return values, but we do declare their type after an arrow (`->`).
+
+* In Rust, the return value of the function is synonymous with the value of the final expression in the block of the body of a function.
+
+* You can return early from a function by using the `return` keyword and specifying a value, but most functions return the last expression implicitly.
+
+```rust
+fn five() -> i32 {
+    5
+}
+
+fn main() {
+    let x = five();
+
+    println!("The value of x is: {}", x);
+}
+```
+
+---
+
+## **5. Control Flow**
