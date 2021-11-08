@@ -259,3 +259,51 @@ fn main() {
 ```
 
 * The tuple without any values, `()`, is a special type that has only one value, also written `()`. The type is called the *unit type* and the value is called the *unit value*. Expressions implicitly return the *unit value* if they don’t return any other value.
+
+
+#### **The Array Type**
+
+* Unlike a tuple, every element of an array must have the same type. 
+
+* Arrays in Rust are different from arrays in some other languages because arrays in Rust have a fixed length, like tuples.
+
+```rust
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+}
+```
+
+* Arrays are useful when you want your data allocated on the stack rather than the heap, or when you want to ensure you always have a fixed number of elements.
+
+* A **vector** is a similar collection type provided by the standard library that *is* allowed to grow or shrink in size.
+
+* If you’re unsure whether to use an array or a vector, you should probably use a vector.
+
+```rust
+// Here it is better to use an array since you know you will not add or remove months (probably)
+
+let months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"];
+```
+
+```rust
+// Here, i32 is the type of each element. After the semicolon, the number 5 indicates the array contains five elements.
+
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+
+
+let b = [3; 5];
+println!("{:?}", b);
+// Prints [3, 3, 3, 3, 3]
+```
+
+#### Accessing Array Elements
+
+```rust
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    let first = a[0];
+    let second = a[1];
+}
+```
