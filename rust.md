@@ -77,8 +77,8 @@ When your project is finally ready for release, you can use `cargo build --relea
 ---
 ## **Topics**
 
-### [Printing](./print.md)
+### [Cheat Sheet](./topics/cheat-sheet.md)
 
-### [Common Concepts](./common-concepts.md)
+### [Common Concepts](./topics/common-concepts.md)
 
-### [Ownership](./ownership.md)
+### [Ownership](./topics/ownership.md)
