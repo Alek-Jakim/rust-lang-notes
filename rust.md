@@ -81,4 +81,4 @@ When your project is finally ready for release, you can use `cargo build --relea
 
 ### [Common Concepts](./common-concepts.md)
 
-### [Ownership] (./ownership.md)
+### [Ownership](./ownership.md)
