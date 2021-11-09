@@ -75,8 +75,10 @@ cargo check
 When your project is finally ready for release, you can use `cargo build --release` to compile it with optimizations. This command will create an executable in target/release instead of target/debug.
 
 ---
-## Topics
+## **Topics**
 
-## [Printing](./print.md)
+### [Printing](./print.md)
 
-## [Common Concepts](./common-concepts.md)
+### [Common Concepts](./common-concepts.md)
+
+### [Ownership] (./ownership.md)
