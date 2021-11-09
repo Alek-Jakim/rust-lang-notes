@@ -437,7 +437,7 @@ fn main() {
 }
 ```
 
-#### **Using `if` in a `let` Statement**
+### **Using `if` in a `let` Statement**
 
 * Because if is an expression, we can use it on the right side of a let statement:
 
@@ -449,3 +449,98 @@ fn main() {
     println!("The value of number is: {}", number);
 }
 ```
+
+### **Repetition with Loops**
+
+* Rust has three kinds of loops: `loop`, `while`, and `for`.
+
+#### **Repeating Code with loop**
+
+* The `loop` keyword tells Rust to execute a block of code over and over again forever or until you explicitly tell it to stop.
+
+* You can place the `break` keyword within the loop to tell the program when to stop executing the loop. 
+
+* The `continue` keyword within a loop tells the program to skip over any remaining code in this iteration of the loop and go to the next iteration.
+
+* If you have loops within loops, `break` and `continue` apply to the innermost loop at that point.
+
+* You can optionally specify a *loop label* on a loop and then use the label with `break` or `continue` to have those keywords applied to the labeled loop instead of the innermost loop.
+
+```rust
+fn main() {
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {}", count);
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {}", remaining);
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+    println!("End count = {}", count);
+}
+```
+
+
+#### **Returning Values from Loops**
+
+```rust
+fn main() {
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {}", result);
+}
+```
+
+
+#### **Conditional Loops with while**
+
+* It’s often useful for a program to evaluate a condition within a loop. While the condition is true, the loop runs. 
+
+```rust
+fn main() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{}!", number);
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
+
+
+#### **Looping Through a Collection with for**
+
+* Use a `for` loop and execute some code for each item in a collection.
+
+```rust
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {}", element);
+    }
+}
+```
+
+* The safety and conciseness of `for` loops makes them the most commonly used loop construct in Rust.
