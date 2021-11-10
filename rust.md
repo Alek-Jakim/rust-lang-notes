@@ -82,3 +82,5 @@ When your project is finally ready for release, you can use `cargo build --relea
 ### [Common Concepts](./topics/common-concepts.md)
 
 ### [Ownership](./topics/ownership.md)
+
+https://memory-spiel-aleksandar-jakimovski.netlify.app/
